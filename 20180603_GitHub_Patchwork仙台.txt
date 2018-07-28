@@ -1,0 +1,87 @@
+20180603 GitHub　Patchwork仙台
+
+manaby
+イトナブ
+
+ナマステさん
+Git
+前のバージョンとの差分がわかる
+GitHubに自作のパッケージをUPして、他の人にレビューしてもらえる機会を作れる
+
+derushioさん
+push 最新バージョンをupする
+pull いちいちサイトに行ってダウンロードする必要なくなる
+pull request(他のエンジニアが、直したものをリクエスト) -> merge
+issue bug報告できる
+雛型をupしておく
+周りの人からのフィードバック
+
+松浦さん @doublemarket
+今日の目的：バージョン管理とGit,GitHubに親しむ
+バージョン管理
+Git 誰が、いつ、どんな変更をしたか
+▼経緯
+一人：ローカルリポジトリ
+複数：集中バージョン管理　
+　デメリット：別の人どうしで同じ箇所に別の修正をかけた場合
+最近：分散バージョン管理
+　リモートリポジトリ -> ローカルリポジトリ
+Linux
+
+ブランチとマージ
+ブランチ　Git管理しているリポジトリを分ける
+　　　　　枝分けして、片方はAという機能、もう片方はBを作る
+マージ　　複数のブランチを一つにマージする
+どのファイルをバージョン管理するか「ステージ」
+変更を記録「コミット」
+誰かが記録した変更を自分の手元に持ってくる「チェックアウト」
+clone(fetch) リモートリポジトリを手元に持ってくる
+fetch 2回目以降差分だけ持ってくる
+commit ローカルリポジトリにcommit
+push リモートリポジトリに変更を送る
+
+GitHubとは
+コラボレーションプラットフォーム
+
+fork 自分のアカウントに丸ごと他の人のbranchをコピーする(たぶん)
+pull request 変更内容を表示、どういう風に実装したのかが一目でわかる
+　-> 一目でわかるため、議論がしやすくなる
+
+今日の課題が終わったら
+英語
+ProGit日本語版
+
+オープンソースに貢献する(不具合直す)
+first-timers-only タグ　-> 初心者向けの不具合修正
+日本語ドキュメントの翻訳　(プロダクト名)日本語翻訳
+
+
+▼Patchwork
+pull requestするときのお作法例
+[add] my username into CONTRIBUTORS
+
+## desc
+added "CONTRIBUTORS/add-ssyk442.txt"
+- [x] you executed tests
+
+▼SVNとGitとの違い
+コンフリクトに強い
+中央で管理している人
+開発している人的にはそこまで変わらないが、
+中央でリポジトリを管理している人にとっては楽
+commitとpushを一緒に行うからまずい
+
+▼疑問点
+git checkout -b <BRNACHNAME>
+-> branchを切ること
+
+pullとcloneの違い ->
+
+forkとcloneの違い ->
+forkはGitHub上でボタン押下すると、自分のremote repositoryに他人の
+repositoryがコピーされるもの。
+それをgit clone "url you just copied" すると、自分のlocal repositoryに
+cloneできる。
+
+[REMOTENAME]
+git remote -v で確認できる
