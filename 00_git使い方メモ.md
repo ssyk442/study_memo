@@ -22,4 +22,4 @@ $ git commit -m "<message>"
 $ git remote add origin <リモートリポジトリ情報(GitHubの"Clone or download)>
 
 ## ローカルリポジトリをリモートリポジトリに反映する
-S $ git push origin master
+$ git push origin master
