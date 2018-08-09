@@ -23,3 +23,7 @@ $ git remote add origin <リモートリポジトリ情報(GitHubの"Clone or do
 
 ## ローカルリポジトリをリモートリポジトリに反映する
 $ git push origin master
+
+## GitHubにpushできない場合の対処方法(publickey関連)
+$ eval "$(ssh-agent -s)"
+$ ssh-add ~/.ssh/id_rsa # github用のssh-keyへのパス
