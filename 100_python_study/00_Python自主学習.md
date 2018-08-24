@@ -1,5 +1,5 @@
 ## Pythonのバージョン確認
-| Python2         | Python3                         |
+| Python2     | Python3             |
 | ----------- | ------------------- |
 | $ python -V | $ python3 --version |
 
@@ -123,6 +123,16 @@ if ( score == 100 ) {
 input_count = input('Please input the number of apples you want to purchase:')
 print('I will buy ' + input_count + 'apples.')
 ```
+```
+numbers = input().rstrip().split(' ')
+result = int(numbers[0]) + int(numbers[1])
+print(  result)
+
+# input
+2 3
+# output
+5
+```
 
 ## for文
 ```
@@ -154,4 +164,50 @@ result
 Iceland is written 氷島 in Kanji.
 Singapore is written 星港 in Kanji.
 Malaysia is written 馬来西亜 in Kanji.
+```
+
+## 関数
+greetings.py
+```
+import random
+
+def hello(name):
+    print('Hello world! My name is ' + name + ' :)')
+
+def greeting_german(name, message='Freut mich!'):
+    print('Guten Tag! Mein Name ist ' + name + '.')
+    print(message)
+
+def greeting_english(name, message='Nice to meet you!'):
+    random_number = random.randint(1,99)
+    print('Hello! My name is ' + name + '.')
+    print(message)
+    print('By the way, my lucky number today is ' + str(random_number) + '!')
+
+```
+script1.py
+```
+import greetings
+
+greetings.greeting_german('Schneider','Ich komme aus Schweiz.')
+greetings.greeting_german('Leonardo')
+```
+$ python3 script1.py
+```
+Guten Tag! Mein Name ist Schneider.
+Ich komme aus Schweiz.
+Guten Tag! Mein Name ist Leonardo.
+Freut mich!
+```
+script2.py
+```
+import greetings
+
+greetings.greeting_english('Doraemon','Please give me dorayaki.')
+```
+$ python3 script2.py
+```
+Hello! My name is Doraemon.
+Please give me dorayaki.
+By the way, my lucky number today is 66!
 ```
