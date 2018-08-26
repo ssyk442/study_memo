@@ -167,7 +167,7 @@ Malaysia is written 馬来西亜 in Kanji.
 ```
 
 ## 関数
-greetings.py
+002_greetings1/greetings.py
 ```
 import random
 
@@ -213,7 +213,7 @@ By the way, my lucky number today is 66!
 ```
 
 ## class
-greetings2.py
+003_greetings2/greetings.py
 ```
 class IcelandicGreetings:
     pass
@@ -243,9 +243,9 @@ class NorwegianGreetings:
         print('Jeg heter ' + self.name + '.')
         print('Hyggelig å se deg!')
 ```
-script3.py
+script.py
 ```
-from greetings2 import GermanGreetings, NorwegianGreetings
+from greetings import GermanGreetings, NorwegianGreetings
 
 # 名前の入力
 name = input("What's your name?: ")
@@ -269,7 +269,7 @@ greetings = [german_greeting,norwegian_greeting]
 # 出力結果
 greetings[selected_language].self_introducing()
 ```
-$ python3 script3.py
+$ python3 script3.py  
 ex1.result(名前:Masamune 言語:German)
 ```
 What's your name?: Masamune
