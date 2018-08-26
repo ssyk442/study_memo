@@ -211,3 +211,113 @@ Hello! My name is Doraemon.
 Please give me dorayaki.
 By the way, my lucky number today is 66!
 ```
+
+## class
+greetings2.py
+```
+class IcelandicGreetings:
+    pass
+
+class GermanGreetings:
+    # __init__メソッドはインスタンス化直後に必ず呼ばれる
+    def __init__(self,name):
+        self.name = name
+
+    def morning_greeting(self):
+        print('Guten Morgen!')
+
+    def self_introducing(self):
+        print('Hallo!')
+        print('Mein Name ist ' + self.name + '.')
+        print('Freut mich!')
+
+class NorwegianGreetings:
+    def __init__(self,name):
+        self.name = name
+
+    def morning_greeting(self):
+        print('God morgen!')
+
+    def self_introducing(self):
+        print('Hei!')
+        print('Jeg heter ' + self.name + '.')
+        print('Hyggelig å se deg!')
+```
+script3.py
+```
+from greetings2 import GermanGreetings, NorwegianGreetings
+
+# 名前の入力
+name = input("What's your name?: ")
+print("------------------------")
+
+# 自己紹介したい言語の選択
+print("In which language do you want to introduce yourself?")
+selected_language = int(input("Please choose the number. - 0.German 1.Norwegian: "))
+
+# エラーチェック本当は必要
+
+print("------------------------")
+
+# Pythonでの親クラスの定義の仕方を知りたい
+german_greeting = GermanGreetings(name)
+norwegian_greeting = NorwegianGreetings(name)
+
+# 0.German 1.Norwegian
+greetings = [german_greeting,norwegian_greeting]
+
+# 出力結果
+greetings[selected_language].self_introducing()
+```
+$ python3 script3.py
+ex1.result(名前:Masamune 言語:German)
+```
+What's your name?: Masamune
+------------------------
+In which language do you want to introduce yourself?
+Please choose the number. - 0.German 1.Norwegian: 0
+------------------------
+Hallo!
+Mein Name ist Masamune.
+Freut mich!
+```
+ex2.result(名前:Tsunenaga 言語:Norwegian)
+```
+What's your name?: Tsunenaga
+------------------------
+In which language do you want to introduce yourself?
+Please choose the number. - 0.German 1.Norwegian: 1
+------------------------
+Hei!
+Jeg heter Tsunenaga.
+Hyggelig å se deg!
+```
+#### Javaとの違い
+- クラスをインスタンス化した後、そのインスタンス変数に対して、元となったクラスで定義されていない変数を自由に定義できてしまう。(「Pythonはこれもできてしまう」のところ)
+- 引数なしの場合でも必ず"self"を定義しなければならない。引数ありの場合は、selfの後ろに定義していく。尚、渡す引数はself以降の引数のみを順に入れていく。
+- Javaのコンストラクタは、Pythonでは`__init__`メソッドで定義するっぽい。
+
+#### Pythonはこれもできてしまう
+```
+class GermanGreetings:
+def self_introducing(self):
+    print('Guten Tag!')
+    print('Mein Name ist ' + self.name + '.')
+    print('Freut mich!')
+
+german_greeting = GermanGreetings()
+# クラス側に未定義の変数↓
+german_greeting.name = 'Oliver'
+print(german_greeting.name)
+```
+## 端数処理
+- 四捨五入 round(数値)
+
+## 継承、インタフェースメモ
+PythonでC#やJavaのinterfaceみたいなものを実現する(@baikichiz)
+https://qiita.com/baikichiz/items/7c3fdb721bb72644f638
+
+29.7. abc — 抽象基底クラス  
+https://docs.python.jp/3/library/abc.html
+
+Pythonは多重継承を許す。
