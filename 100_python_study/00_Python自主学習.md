@@ -3,12 +3,22 @@
 | ----------- | ------------------- |
 | $ python -V | $ python3 --version |
 
+=> 20180827追記  
+pyenvにバージョンの設定をすれば、バージョンの切り替えができるようになる。特に2系と3系の切り替えが楽になる。  
+
+$ python --version
+
+## pyenv
+pyenvをインストールすると、複数のバージョンが管理できる。  
+
+pyenvのインストール、使い方、pythonのバージョン切り替えできない時の対処法(@koooooo)
+https://qiita.com/koooooo/items/b21d87ffe2b56d0c589b
+
 以降、Python3を想定
 
 ## .pyファイル実行
 - $ cd [.pyファイルがあるディレクトリ]
 - $ python3 [実行したいファイル.py]
-
 
 ##    文字列出力
 [ファイル名].py
@@ -321,3 +331,10 @@ https://qiita.com/baikichiz/items/7c3fdb721bb72644f638
 https://docs.python.jp/3/library/abc.html
 
 Pythonは多重継承を許す。
+
+## 正規表現
+##### 参考：「退屈なことはPythonにやらせようーノンプログラマーにもできる自動化処理プログラミング」(Al Sweigart著 相川 愛三訳 オライリー・ジャパン)
+- import re(正規表現モジュール)
+- re.compile()で検索したい正規表現(Regexオブジェクト)を返す。
+- Regexオブジェクトのsearch()内に上記正規表現のパターンがないか検索する。ある場合は、Matchオブジェクトに合致した部分を返す。
+- Matchオブジェクトのgroup()メソッドでマッチしたテキストを返す。
