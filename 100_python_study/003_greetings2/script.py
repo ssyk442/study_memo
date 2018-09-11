@@ -1,4 +1,5 @@
-from greetings import GermanGreetings, NorwegianGreetings
+from german_greetings import GermanGreetings
+from norwegian_greetings import NorwegianGreetings
 
 # --------------------------------------
 # 選択言語コードチェック
@@ -24,10 +25,9 @@ while not language_id:
     # 想定値以外を入力した場合は再度入力を促す
     if not check_language_id(language_id):
         language_id = ''
-        
+
 print("------------------------")
 
-# Pythonでの親クラスの定義の仕方を知りたい
 # 0.German 1.Norwegian
 greetings = [
     GermanGreetings(name)
@@ -36,4 +36,4 @@ greetings = [
 
 # 出力結果
 language_index = int(language_id)
-greetings[language_index].self_introducing()
+print(greetings[language_index].self_introducing())

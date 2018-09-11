@@ -323,7 +323,18 @@ print(german_greeting.name)
 ## 端数処理
 - 四捨五入 round(数値)
 
-## 継承、インタフェースメモ
+## 継承
+```
+# 子クラス(親クラス)
+class GermanGreetings(Greetings):
+    pass
+```
+- 「親クラス(上位)を継承する」と「サブルーチン(下位)を呼ぶ」は、共通処理を呼ぶという意味では共通だが、呼び先が上位なのか下位なのかが異なる。
+- 子クラスは親クラスのメソッドをそのまま使える。子クラス側で独自にメソッドを定義してもok。
+- オーバーライドはJavaと同じ発想。子クラスに同名メソッドがある場合、子クラスのメソッドが呼ばれる。
+
+
+## インタフェース
 PythonでC#やJavaのinterfaceみたいなものを実現する(@baikichiz)
 https://qiita.com/baikichiz/items/7c3fdb721bb72644f638
 
