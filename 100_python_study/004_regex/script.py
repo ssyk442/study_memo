@@ -1,4 +1,4 @@
-from SearchMobileNumber import SearchMobileNumber
+from searchMobileNumber import SearchMobileNumber
 
 text = \
  input('Please write or paste the message \nwhich might include mobile numbers.: ')
