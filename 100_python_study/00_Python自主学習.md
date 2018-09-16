@@ -20,7 +20,7 @@ https://qiita.com/koooooo/items/b21d87ffe2b56d0c589b
 - $ cd [.pyファイルがあるディレクトリ]
 - $ python3 [実行したいファイル.py]
 
-##    文字列出力
+## 文字列出力
 [ファイル名].py
 ```
 print('hello python')
@@ -142,6 +142,22 @@ print(  result)
 2 3
 # output
 5
+```
+#### Javaの場合
+```
+import java.util.Scanner;
+
+class Main {
+  public static void main (String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Please input the number of apples you want to purchase:");
+
+    String inputCount = scanner.nextInt();
+
+    System.out.println("I will buy " + input_count + "apples.")
+  }
+}
+
 ```
 
 ## for文
