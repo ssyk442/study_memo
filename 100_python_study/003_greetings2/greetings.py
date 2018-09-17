@@ -6,3 +6,6 @@ class Greetings:
     # __init__メソッドはインスタンス化直後に必ず呼ばれる
     def __init__(self,name):
         self.name = name
+
+    def self_introducing(self):
+        return "★★ Sorry! I'm not ready to answer your request. ★★"

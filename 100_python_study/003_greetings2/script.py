@@ -1,12 +1,15 @@
 from german_greetings import GermanGreetings
 from norwegian_greetings import NorwegianGreetings
 from icelandic_greetings import IcelandicGreetings
+from spanish_greetings import SpanishGreetings
 
 # --------------------------------------
+# グローバル変数っぽくしたい(他クラスからも同じ定数呼びたい)
 GERMAN = '0'
 NORWEGIAN = '1'
 ICELANDIC = '2'
-# ここ一本化したい
+SPANISH = '3'
+
 GENDER_MALE = "0"
 GENDER_FEMALE = "1"
 # --------------------------------------
@@ -16,6 +19,7 @@ def check_language_id(id):
         GERMAN:True    # German
         ,NORWEGIAN:True   # Norwegian
         ,ICELANDIC:True   # Icelandic
+        ,SPANISH:True   # Spanish
     }.get(id,False) # other ids aren't valid
 # --------------------------------------
 # 選択性別コードチェック
@@ -36,37 +40,45 @@ print(name + ", in which language do you want to introduce yourself?")
 
 language_id = ''
 while not language_id:
-    language_id = input("Please choose the number. - 0.German 1.Norwegian 2.Icelandic: ")
+    language_id = input("Please select the number. \n- 0.German 1.Norwegian 2.Icelandic 3.Spanish: ")
     # 想定値以外を入力した場合は再度入力を促す
     if not check_language_id(language_id):
         language_id = ''
 
-# 自己紹介する人の性別
-# my_gender_id = ''
-# while not my_gender_id:
-#     my_gender_id = input("Please choose your gender. - 0.male 1.female: ")
-#     # 想定値以外を入力した場合は再度入力を促す
-#     if not check_gender_id(my_gender_id):
-#         my_gender_id = ''
+# 自己紹介する人の性別(スペイン語)
+my_gender_id = ''
+langs_using_my_gender = [SPANISH]
 
-if language_id == ICELANDIC:
-    # 自己紹介したい相手の性別(アイスランド語の場合必要)
-    others_gender_id = ''
+if language_id in langs_using_my_gender:
+    while not my_gender_id:
+        my_gender_id = input("Please select your gender. \n- 0.male 1.female: ")
+        # 想定値以外を入力した場合は再度入力を促す
+        if not check_gender_id(my_gender_id):
+            my_gender_id = ''
+
+# 自己紹介したい相手の性別(アイスランド語)
+others_gender_id = ''
+langs_using_others_gender = [ICELANDIC]
+
+if language_id in langs_using_others_gender:
     while not others_gender_id:
-        others_gender_id = input("Please choose the gender who you want to introduce yourself. - 0.male 1.female: ")
+        others_gender_id = input("Please select the gender who you want to introduce yourself. \n- 0.male 1.female: ")
         # 想定値以外を入力した場合は再度入力を促す
         if not check_gender_id(others_gender_id):
             others_gender_id = ''
 
 print("------------------------")
 
-# 0.German 1.Norwegian 2.Icelandic
+# インスタンス化
 if language_id == GERMAN:
     greetings = GermanGreetings(name)
 elif language_id == NORWEGIAN:
     greetings = NorwegianGreetings(name)
-else:
+elif language_id == ICELANDIC:
     greetings = IcelandicGreetings(name, others_gender_id)
+else:
+    greetings = SpanishGreetings(name, my_gender_id)
 
 # 出力結果
 print(greetings.self_introducing())
+print("------------------------")
