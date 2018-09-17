@@ -2,6 +2,7 @@ from german_greetings import GermanGreetings
 from norwegian_greetings import NorwegianGreetings
 from icelandic_greetings import IcelandicGreetings
 from spanish_greetings import SpanishGreetings
+from basque_greetings import BasqueGreetings
 
 # --------------------------------------
 # グローバル変数っぽくしたい(他クラスからも同じ定数呼びたい)
@@ -9,6 +10,7 @@ GERMAN = '0'
 NORWEGIAN = '1'
 ICELANDIC = '2'
 SPANISH = '3'
+BASQUE = '4'
 
 GENDER_MALE = "0"
 GENDER_FEMALE = "1"
@@ -20,6 +22,7 @@ def check_language_id(id):
         ,NORWEGIAN:True   # Norwegian
         ,ICELANDIC:True   # Icelandic
         ,SPANISH:True   # Spanish
+        ,BASQUE:True    # Basque
     }.get(id,False) # other ids aren't valid
 # --------------------------------------
 # 選択性別コードチェック
@@ -40,7 +43,7 @@ print(name + ", in which language do you want to introduce yourself?")
 
 language_id = ''
 while not language_id:
-    language_id = input("Please select the number. \n- 0.German 1.Norwegian 2.Icelandic 3.Spanish: ")
+    language_id = input("Please select the number. \n- 0.German 1.Norwegian 2.Icelandic 3.Spanish 4.Basque: ")
     # 想定値以外を入力した場合は再度入力を促す
     if not check_language_id(language_id):
         language_id = ''
@@ -76,8 +79,14 @@ elif language_id == NORWEGIAN:
     greetings = NorwegianGreetings(name)
 elif language_id == ICELANDIC:
     greetings = IcelandicGreetings(name, others_gender_id)
-else:
+elif language_id == SPANISH:
     greetings = SpanishGreetings(name, my_gender_id)
+elif language_id == BASQUE:
+    greetings = BasqueGreetings(name)
+# elseは通り得ないが、言語追加の度else=>elifに直すのが嫌なので
+# ダミーelseを作っておく
+else:
+    greetings = Greetings(name)
 
 # 出力結果
 print(greetings.self_introducing())
