@@ -1,4 +1,6 @@
 # Python3
+# utf-8
+import configparser
 import csv
 import docx
 # --------------------------------------------------------
@@ -6,6 +8,7 @@ import docx
 # ・CSVファイルに含まれる「見出し」「質問」「回答」を
 #   Wordファイルに転記します。
 # ・CSVファイルは、当pyファイルと同一ディレクトリ内に存在すること、
+#   パラメータ設定「config.ini」も同ディレクトリ内に存在すること、
 #   Wordファイルも、同ディレクトリ内に作成or上書きされることを
 #   想定しています。
 # ・CSVファイル1行につき1つの質問、
@@ -16,18 +19,34 @@ import docx
 #   「質問」「回答」(小見出し)のスタイルはHeading 1固定、
 #   「質問」「回答」の内容自体はスタイル指定なしとします。
 # ・Title、Heading 1の書式はWord側で適宜編集してください。
-#
+# ・config.iniにファイル名、列インデックスを指定してください。
 # --------------------------------------------------------
-# パラメータ設定
-# 各ファイル名
-CSV_FILE_NAME = "csvtest.csv"
-DOCX_FILE_NAME = "docxtest.docx"
+# パラメータ設定(config.iniより取得)
+config = configparser.ConfigParser()
 
-# CSVから取り出したい文字列の列インデックス(0〜)
-TITLE_COLUMN_INDEX = 0
-QUESTION_COLUMN_INDEX = 1
-FIRST_ANSWER_COLUMN_INDEX = 2
-LAST_ANSWER_COLUMN_INDEX = 2
+try:
+    # configのファイルを開く
+    config.read('config.ini')
+    # セクションを取得
+    file_section = config['FILE_NAME']
+    index_section = config['COLUMN_INDEX']
+
+    # パラメータの読み込み
+    # 各ファイル名
+    CSV_FILE_NAME = file_section.get('csv_file')
+    DOCX_FILE_NAME = file_section.get('docx_file')
+
+    # CSVから取り出したい文字列の列インデックス(0〜)
+    TITLE_COLUMN_INDEX = int(index_section.get('title_column'))
+    QUESTION_COLUMN_INDEX = int(index_section.get('question_column'))
+    FIRST_ANSWER_COLUMN_INDEX = int(index_section.get('first_answer_column'))
+    LAST_ANSWER_COLUMN_INDEX = int(index_section.get('last_answer_column'))
+
+# iniファイルオープン、セクション取得に失敗した場合
+# ※パラメータ読み込みチェックは実装していません。
+except:
+    print("config.iniが存在しないか、config.ini内のパラメータが不正です。")
+    exit()
 
 # --------------------------------------------------------
 # Wordに転記する「最終回答」を対象行より取得するメソッド
