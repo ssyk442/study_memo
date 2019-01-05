@@ -374,3 +374,9 @@ Pythonは多重継承を許す。
 ## 定数
 - Pythonには存在しない。
 - 慣習的に大文字とアンダースコアで宣言する。
+
+## Unicode
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-5: ordinal not in range(128)
+https://qiita.com/toshihikoyanase/items/47407551d8f3d4e8c39a
+
+$ export LC_ALL=ja_JP.UTF-8
